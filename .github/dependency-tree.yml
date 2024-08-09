@@ -18,8 +18,16 @@ build:
         npm install flowfuse/driver-localfs --save
         npm ci
         npm run build
-      upstream: echo "flowfuse is Upstream"
-      downstream: echo "flowfuse is Downstream"
+      upstream: | 
+        echo "flowfuse is Upstream"
+        npm link @flowfuse/driver-localfs
+        npm ci
+        npm run build
+      downstream: |
+        echo "flowfuse is downstream"
+        npm link @flowfuse/driver-localfs
+        npm ci
+        npm run build
       after:
         current: |
           pwd
