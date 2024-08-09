@@ -58,6 +58,7 @@ async function startProject (app, project, ProjectStack, userDir, port) {
 
     const authTokens = await project.refreshAuthTokens()
 
+    env.IS_CUSTOM = true
     env.FORGE_CLIENT_ID = authTokens.clientID
     env.FORGE_CLIENT_SECRET = authTokens.clientSecret
     env.FORGE_URL = app.config.api_url
