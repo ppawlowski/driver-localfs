@@ -15,18 +15,18 @@ build:
       #   upstream: String | List of Strings
         downstream: npm list -g --depth=0
       current: |
-        npm install flowfuse/driver-localfs --save
+        echo "flowfuse is current"
         npm ci
         npm run build
       upstream: | 
         echo "flowfuse is Upstream"
-        npm link @flowfuse/driver-localfs
         npm ci
+        npm link @flowfuse/driver-localfs
         npm run build
       downstream: |
         echo "flowfuse is downstream"
-        npm link @flowfuse/driver-localfs
         npm ci
+        npm link @flowfuse/driver-localfs
         npm run build
       after:
         current: |
@@ -49,8 +49,8 @@ build:
   - project: ppawlowski/driver-localfs
     build-command:
       current: |
-        npm link @flowfuse/nr-launcher
         npm ci
+        npm link @flowfuse/nr-launcher
         npm link
       upstream: echo "driver-localfs is Upstream"
       downstream: echo "driver-localfs is Downstream"
