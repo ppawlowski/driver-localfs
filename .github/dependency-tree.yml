@@ -54,6 +54,7 @@ build:
       current: |
         npm link @flowfuse/nr-launcher
         npm ci
+        npm link
       upstream: echo "driver-localfs is Upstream"
       downstream: echo "driver-localfs is Downstream"
       after:
