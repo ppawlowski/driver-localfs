@@ -44,7 +44,7 @@ build:
       #   upstream: String | List of Strings
       #   downstream: String | List of Strings
       current: |
-        npm link nr-launcher
+        npm link @flowfuse/nr-launcher
         npm ci
         npm run build
       upstream: echo "driver-localfs is Upstream"
