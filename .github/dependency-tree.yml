@@ -16,24 +16,29 @@ build:
         downstream: npm list -g --depth=0
       current: |
         echo "flowfuse is current"
-        npm ci
+        npm install --no-audit --no-fund pg-hstore@^2.3.4
+        npm install --no-audit --no-fund @flowfuse/driver-kubernetes
+        npm install --no-audit --no-fund
         npm run build
       upstream: | 
         echo "flowfuse is Upstream"
-        npm ci
-        npm link @flowfuse/driver-localfs
-        npm run build
+        # npm ci
+        # npm link @flowfuse/driver-localfs
+        # npm run build
       downstream: |
         echo "flowfuse is downstream"
-        npm ci
+        npm install --no-audit --no-fund pg-hstore@^2.3.4
+        npm install --no-audit --no-fund @flowfuse/driver-kubernetes
+        npm install --no-audit --no-fund
         npm link @flowfuse/driver-localfs
         npm run build
-      after:
-        current: |
-          pwd
-          cat package.json
-        upstream: |
-          npm list -g --depth=0
+        docker build -f ./ci/Dockerfile-build-chain -t $build-chain .
+      # after:
+      #   current: |
+      #     pwd
+      #     cat package.json
+      #   upstream: |
+      #     npm list -g --depth=0
       #   downstream: String | List of Strings
     # clone: List of Strings
     # skip: true
@@ -42,10 +47,10 @@ build:
       current: |
         npm ci 
         npm run test
-      upstream:
-        npm ci
-        npm run test
-        npm link
+      # upstream:
+      #   npm ci
+      #   npm run test
+      #   npm link
   - project: ppawlowski/driver-localfs
     build-command:
       current: |
