@@ -7,13 +7,16 @@ dependencies:
     dependencies:
       - project: ppawlowski/nr-launcher
   - project: ppawlowski/nr-launcher
+pre: |
+  export PATH=$(pwd)
 build:
   - project: ppawlowski/flowfuse
     build-command:
-      before:
+      # before:
       #   current: String | List of Strings
       #   upstream: String | List of Strings
-        downstream: npm list -g --depth=0
+        # downstream: |
+        #   export PATH=$(pwd)
       current: |
         echo "flowfuse is current"
         npm install --no-audit --no-fund pg-hstore@^2.3.4
@@ -27,7 +30,7 @@ build:
         npm install --no-audit --no-fund pg-hstore@^2.3.4
         npm install --no-audit --no-fund @flowfuse/driver-kubernetes
         npm install --no-audit --no-fund
-        cp -r ../ppawlowski_driver-localfs/* node_modules/@flowfuse/driver-localfs/
+        npm install $PATH/../ppawlowski_driver-localfs/
         npm run build
         docker build -f ./ci/Dockerfile-build-chain -t k8s-forge:build-chain-local .
       # after:
@@ -50,7 +53,9 @@ build:
       #   npm link
   - project: ppawlowski/driver-localfs
     build-command:
-      current: npm ci
+      current: |
+        npm ci
+        npm pack --no-scripts
       upstream: echo "driver-localfs is Upstream"
       downstream: echo "driver-localfs is Downstream"
       after:
@@ -59,5 +64,4 @@ build:
           cat package.json
       #   upstream: String | List of Strings
       #   downstream: String | List of Strings
-    # clone: List of Strings
     # skip: true
