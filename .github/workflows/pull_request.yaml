@@ -20,4 +20,23 @@ jobs:
           logger-level: debug
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-
+  publish_image:
+    runs-on: ubuntu-latest
+    needs: build-chain
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: k8s-forge
+          path: ./k8s-forge
+      - name: Load image
+        run: docker load < ./k8s-forge.tar
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Tag and Push Image
+        run: |
+          docker tag k8s-forge:build-chain-local ghcr.io/${{ github.repository_owner }}/flowfuse/k8s-forge:${{ github.run_number }}
+          docker push ghcr.io/${{ github.repository_owner }}/flowfuse/k8s-forge:${{ github.run_number }}
