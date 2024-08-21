@@ -11,6 +11,9 @@ dependencies:
 #   export TAG=$(date +%Y%m%d%H%M%S)
 build:
   - project: ppawlowski/flowfuse
+    archive-artifacts:
+      name: k8s-forge
+      path: "**/k8s-forge.tar"
     build-command:
       #   upstream: String | List of Strings
         # downstream: |
@@ -67,6 +70,3 @@ build:
       #   upstream: String | List of Strings
       #   downstream: String | List of Strings
     # skip: true
-archive-artifacts:
-  name: k8s-forge
-  path: **/k8s-forge.tar
