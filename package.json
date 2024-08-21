@@ -6,7 +6,8 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "lint": "eslint -c .eslintrc *.js",
-        "lint:fix": "eslint -c .eslintrc *.js --fix"
+        "lint:fix": "eslint -c .eslintrc *.js --fix",
+        "ci:pack-and-rename": "npm pack --no-scripts && mv $(npm pack) flowfuse-driver-localfs.tgz"
     },
     "repository": {
         "type": "git",
