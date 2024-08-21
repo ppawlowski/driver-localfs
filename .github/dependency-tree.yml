@@ -40,18 +40,8 @@ build:
         docker build -f ./ci/Dockerfile-build-chain -t k8s-forge:build-chain-local .
         docker image save -o k8s-forge.tar k8s-forge:build-chain-local
     archive-artifacts:
-      name: k8s-forge
       path: |
-        k8s-forge.tar
-      # after:
-      #   current: |
-      #     pwd
-      #     cat package.json
-      #   upstream: |
-      #     npm list -g --depth=0
-      #   downstream: String | List of Strings
-    # clone: List of Strings
-    # skip: true
+        **/k8s-forge.tar
   - project: ppawlowski/nr-launcher
     build-command:
       upstream: echo "nr-launcher is Upstream"
