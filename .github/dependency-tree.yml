@@ -7,13 +7,12 @@ dependencies:
     dependencies:
       - project: ppawlowski/nr-launcher
   - project: ppawlowski/nr-launcher
-# pre: |
-#   export PATH=$(pwd)
 build:
   - project: ppawlowski/flowfuse
     build-command:
-      # before:
-      #   current: String | List of Strings
+      before:
+        current: |
+          export TAG=$(date +%Y%m%d%H%M%S)
       #   upstream: String | List of Strings
         # downstream: |
         #   export PATH=$(pwd)
@@ -34,6 +33,8 @@ build:
         npm install --no-audit --no-fund ../ppawlowski_driver-localfs/flowfuse-driver-localfs.tgz
         npm run build
         docker build -f ./ci/Dockerfile-build-chain -t k8s-forge:build-chain-local .
+        docker tag k8s-forge:build-chain-local ghcr.io/ppawlowski/flowfuse/k8s-forge:$TAG
+        docker push ghcr.io/ppawlowski/flowfuse/k8s-forge:$TAG
       # after:
       #   current: |
       #     pwd
