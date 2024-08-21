@@ -7,15 +7,17 @@ dependencies:
     dependencies:
       - project: ppawlowski/nr-launcher
   - project: ppawlowski/nr-launcher
-pre: |
-  export TAG=$(date +%Y%m%d%H%M%S)
+# pre: |
+#   export TAG=$(date +%Y%m%d%H%M%S)
 build:
   - project: ppawlowski/flowfuse
     build-command:
       #   upstream: String | List of Strings
         # downstream: |
         #   export PATH=$(pwd)
-
+      before:
+        current: |
+          export TAG=$(date +%Y%m%d%H%M%S)
       current: |
         echo "flowfuse is current"
         npm install --no-audit --no-fund pg-hstore@^2.3.4
