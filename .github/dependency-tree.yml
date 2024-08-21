@@ -56,7 +56,7 @@ build:
     build-command:
       current: |
         npm ci
-        npm run packandrename
+        npm run ci:pack-and-rename
       upstream: echo "driver-localfs is Upstream"
       downstream: echo "driver-localfs is Downstream"
       after:
