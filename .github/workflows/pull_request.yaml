@@ -12,6 +12,7 @@ jobs:
         uses: kiegroup/github-action-build-chain@v3.5.6
         with:
           definition-file: ./.github/dependency-tree.yml
+          starting-project: ppawlowski/flowfuse
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
