@@ -11,10 +11,6 @@ dependencies:
 #   export TAG=$(date +%Y%m%d%H%M%S)
 build:
   - project: ppawlowski/flowfuse
-    archive-artifacts:
-      name: k8s-forge
-      path: |
-        .//k8s-forge.tar
     build-command:
       #   upstream: String | List of Strings
         # downstream: |
@@ -43,6 +39,10 @@ build:
         npm run build
         docker build -f ./ci/Dockerfile-build-chain -t k8s-forge:build-chain-local .
         docker image save -o k8s-forge.tar k8s-forge:build-chain-local
+    archive-artifacts:
+      name: k8s-forge
+      path: |
+        ./k8s-forge.tar
       # after:
       #   current: |
       #     pwd
