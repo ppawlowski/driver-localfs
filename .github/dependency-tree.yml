@@ -7,10 +7,11 @@ dependencies:
     dependencies:
       - project: ppawlowski/nr-launcher
   - project: ppawlowski/nr-launcher
+pre:
 build:
   - project: ppawlowski/flowfuse
     build-command:
-      before:
+      pre:
         current: |
           export TAG=$(date +%Y%m%d%H%M%S)
       #   upstream: String | List of Strings
