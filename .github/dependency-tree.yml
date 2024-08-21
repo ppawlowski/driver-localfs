@@ -9,6 +9,10 @@ dependencies:
   - project: ppawlowski/nr-launcher
 # pre: |
 #   export TAG=$(date +%Y%m%d%H%M%S)
+archive-artifacts:
+  name: k8s-forge
+  path: |
+    k8s-forge.tar
 build:
   - project: ppawlowski/flowfuse
     build-command:
@@ -42,7 +46,7 @@ build:
     archive-artifacts:
       name: k8s-forge
       path: |
-        ./k8s-forge.tar
+        k8s-forge.tar
       # after:
       #   current: |
       #     pwd
