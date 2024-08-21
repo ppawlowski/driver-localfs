@@ -68,4 +68,5 @@ build:
       #   downstream: String | List of Strings
     # skip: true
 archive-artifacts:
+  name: k8s-forge
   path: **/k8s-forge.tar
