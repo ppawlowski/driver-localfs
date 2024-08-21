@@ -57,7 +57,7 @@ build:
       current: |
         npm ci
         npm pack --no-scripts
-git        mv flowfuse-driver-localfs-*.tgz flowfuse-driver-localfs.tgz
+        mv flowfuse-driver-localfs-*.tgz flowfuse-driver-localfs.tgz
       upstream: echo "driver-localfs is Upstream"
       downstream: echo "driver-localfs is Downstream"
       after:
