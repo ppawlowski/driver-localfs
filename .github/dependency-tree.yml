@@ -12,7 +12,7 @@ pre: |
 build:
   - project: ppawlowski/flowfuse
     build-command:
-      before:
+      # before:
       #   current: String | List of Strings
       #   upstream: String | List of Strings
         # downstream: |
