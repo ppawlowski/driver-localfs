@@ -2,6 +2,10 @@ name: Build all on PR
 
 on: [pull_request]
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   build-chain:
     runs-on: ubuntu-latest
@@ -13,6 +17,7 @@ jobs:
         with:
           definition-file: ./.github/dependency-tree.yml
           flow-type: full_downstream
+          logger-level: debug
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
 
