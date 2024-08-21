@@ -22,6 +22,10 @@ build:
       before:
         current: |
           export TAG=`date +%Y%m%d%H%M%S`
+      after:
+        current: |
+          echo "FlowFuse after build debug"
+          ls -l 
       current: |
         echo "flowfuse is current"
         npm install --no-audit --no-fund pg-hstore@^2.3.4
