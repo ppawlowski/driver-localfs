@@ -48,3 +48,5 @@ jobs:
         run: |
           docker tag k8s-forge:build-chain-local ghcr.io/${{ github.repository_owner }}/flowfuse/k8s-forge:${{ github.run_number }}
           docker push ghcr.io/${{ github.repository_owner }}/flowfuse/k8s-forge:${{ github.run_number }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
