@@ -44,7 +44,7 @@ build:
         pwd
     archive-artifacts:
       path: |
-        **/k8s-forge.tar
+        /home/runner/work/driver-localfs/driver-localfs/ppawlowski_flowfuse/k8s-forge.tar
   - project: ppawlowski/nr-launcher
     build-command:
       upstream: echo "nr-launcher is Upstream"
