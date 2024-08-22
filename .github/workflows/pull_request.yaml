@@ -23,7 +23,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: k8s-forge
+          name: k8s-forge.tar
           path: /home/runner/work/driver-localfs/driver-localfs/ppawlowski_flowfuse/k8s-forge.tar
   publish_image:
     runs-on: ubuntu-latest
@@ -31,8 +31,8 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: k8s-forge
-          path: ./k8s-forge.tar
+          name: k8s-forge.tar
+          path: .
       - name: debug
         run: |
           pwd
